@@ -11,10 +11,18 @@
     "start": "node dist/index.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "echo 'lint: auth-service'",
-    "test": "echo 'test: auth-service'"
+    "test": "vitest run"
   },
   "dependencies": {
     "@rh/config-kit": "workspace:*",
-    "@rh/service-runtime": "workspace:*"
+    "@rh/service-runtime": "workspace:*",
+    "@rh/shared-types": "workspace:*",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/pg": "^8.15.5"
   }
 }

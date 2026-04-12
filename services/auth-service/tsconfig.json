@@ -1,6 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "../../"
+  },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "tests/**/*.ts",
+    "../../packages/shared-types/src/**/*.ts",
+    "../../packages/config-kit/src/**/*.ts",
+    "../../packages/service-runtime/src/**/*.ts"
   ]
 }

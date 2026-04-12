@@ -1,30 +1,204 @@
 openapi: 3.1.0
 info:
   title: Russian House Event Platform API
-  version: 0.1.0
+  version: 0.2.0
 servers:
   - url: http://localhost:8080
 paths:
-  /v1/events:
-    get:
-      summary: List events
+  /v1/auth/challenges:
+    post:
+      summary: Request OTP challenge
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email:
+                  type: string
+                  format: email
+      responses:
+        '201':
+          description: Challenge created
+  /v1/auth/verify:
+    post:
+      summary: Verify OTP challenge and issue tokens
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [challengeId, email, code]
+              properties:
+                challengeId:
+                  type: string
+                  format: uuid
+                email:
+                  type: string
+                  format: email
+                code:
+                  type: string
+                  minLength: 6
+                  maxLength: 6
       responses:
         '200':
-          description: Successful response
-  /v1/events/{eventId}/teams/{teamId}/passport:
+          description: Authenticated
+  /v1/auth/me:
     get:
-      summary: Get team route passport
+      summary: Return current session identity
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Current user session
+  /v1/auth/refresh:
+    post:
+      summary: Rotate session using refresh token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refreshToken]
+              properties:
+                refreshToken:
+                  type: string
+      responses:
+        '200':
+          description: Refreshed tokens
+  /v1/auth/logout:
+    post:
+      summary: Revoke refresh session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refreshToken]
+              properties:
+                refreshToken:
+                  type: string
+      responses:
+        '204':
+          description: Logged out
+  /v1/profile/me:
+    get:
+      summary: Read current profile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Profile
+    patch:
+      summary: Update current profile
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                phone:
+                  type: string
+                birthDate:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Updated profile
+  /v1/access/global-roles:
+    post:
+      summary: Assign global role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [accountId, role]
+              properties:
+                accountId:
+                  type: string
+                role:
+                  type: string
+      responses:
+        '201':
+          description: Assigned
+  /v1/access/event-roles:
+    post:
+      summary: Assign event-scoped role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [accountId, eventId, role]
+              properties:
+                accountId:
+                  type: string
+                eventId:
+                  type: string
+                role:
+                  type: string
+                stationId:
+                  type: string
+      responses:
+        '201':
+          description: Assigned
+  /v1/access/resolve:
+    get:
+      summary: Resolve account roles and permissions
       parameters:
-        - in: path
-          name: eventId
+        - in: query
+          name: accountId
           required: true
           schema:
             type: string
-        - in: path
-          name: teamId
-          required: true
+        - in: query
+          name: eventId
+          required: false
           schema:
             type: string
       responses:
         '200':
-          description: Team route passport
+          description: Effective permissions
+  /v1/access/check:
+    post:
+      summary: Permission check helper
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [accountId, permission]
+              properties:
+                accountId:
+                  type: string
+                permission:
+                  type: string
+                eventId:
+                  type: string
+                stationId:
+                  type: string
+      responses:
+        '200':
+          description: Allow/deny
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

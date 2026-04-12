@@ -11,10 +11,16 @@
     "start": "node dist/index.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "echo 'lint: identity-profile-service'",
-    "test": "echo 'test: identity-profile-service'"
+    "test": "vitest run"
   },
   "dependencies": {
     "@rh/config-kit": "workspace:*",
-    "@rh/service-runtime": "workspace:*"
+    "@rh/service-runtime": "workspace:*",
+    "@rh/shared-types": "workspace:*",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4",
+    "@types/pg": "^8.15.5"
   }
 }

@@ -18,5 +18,8 @@ export const Topics = {
   TeamQrInvalidated: "team.qr.invalidated.v1",
   CheckpointStatusChanged: "checkpoint.status.changed.v1",
   IncidentRaised: "incident.raised.v1",
-  AuditCriticalAction: "audit.critical_action.v1"
+  AuditCriticalAction: "audit.critical_action.v1",
+  AccountAuthenticated: "auth.account.authenticated.v1",
+  ProfileUpdated: "identity.profile.updated.v1",
+  RolesChanged: "access.roles.changed.v1"
 } as const;
