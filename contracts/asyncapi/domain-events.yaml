@@ -1,0 +1,41 @@
+asyncapi: 3.0.0
+info:
+  title: Russian House Event Backbone
+  version: 0.1.0
+channels:
+  team.ready.v1:
+    address: team.ready.v1
+    messages:
+      teamReady:
+        payload:
+          type: object
+          required: [teamId, eventId, readyAt]
+          properties:
+            teamId:
+              type: string
+            eventId:
+              type: string
+            readyAt:
+              type: string
+              format: date-time
+  checkpoint.status.changed.v1:
+    address: checkpoint.status.changed.v1
+    messages:
+      checkpointStatusChanged:
+        payload:
+          type: object
+          required: [checkpointId, teamId, eventId, oldStatus, newStatus, changedAt]
+          properties:
+            checkpointId:
+              type: string
+            teamId:
+              type: string
+            eventId:
+              type: string
+            oldStatus:
+              type: string
+            newStatus:
+              type: string
+            changedAt:
+              type: string
+              format: date-time

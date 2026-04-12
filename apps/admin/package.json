@@ -1,0 +1,12 @@
+{
+  "name": "@rh/admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'admin build baseline'",
+    "dev": "echo 'admin dev baseline'",
+    "typecheck": "echo 'admin typecheck baseline'",
+    "lint": "echo 'lint: admin'",
+    "test": "echo 'test: admin'"
+  }
+}

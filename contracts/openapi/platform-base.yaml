@@ -1,0 +1,30 @@
+openapi: 3.1.0
+info:
+  title: Russian House Event Platform API
+  version: 0.1.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /v1/events:
+    get:
+      summary: List events
+      responses:
+        '200':
+          description: Successful response
+  /v1/events/{eventId}/teams/{teamId}/passport:
+    get:
+      summary: Get team route passport
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: teamId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Team route passport

@@ -1,0 +1,12 @@
+{
+  "name": "@rh/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'web build baseline'",
+    "dev": "echo 'web dev baseline'",
+    "typecheck": "echo 'web typecheck baseline'",
+    "lint": "echo 'lint: web'",
+    "test": "echo 'test: web'"
+  }
+}

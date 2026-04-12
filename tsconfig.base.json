@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true,
+    "declaration": true,
+    "outDir": "dist",
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@rh/shared-types": ["packages/shared-types/src/index.ts"],
+      "@rh/shared-events": ["packages/shared-events/src/index.ts"],
+      "@rh/config-kit": ["packages/config-kit/src/index.ts"],
+      "@rh/observability-kit": ["packages/observability-kit/src/index.ts"],
+      "@rh/service-runtime": ["packages/service-runtime/src/index.ts"],
+      "@rh/test-kit": ["packages/test-kit/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

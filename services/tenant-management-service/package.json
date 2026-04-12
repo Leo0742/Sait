@@ -1,0 +1,20 @@
+{
+  "name": "@rh/tenant-management-service",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "echo 'lint: tenant-management-service'",
+    "test": "echo 'test: tenant-management-service'"
+  },
+  "dependencies": {
+    "@rh/config-kit": "workspace:*",
+    "@rh/service-runtime": "workspace:*"
+  }
+}
