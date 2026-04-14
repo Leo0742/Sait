@@ -4,40 +4,64 @@ import Link from 'next/link';
 
 const events = [
   {
-    id: 'mfm2026',
-    title: 'Международный фестиваль молодёжи – 2026',
-    location: 'Россия, Свердловская область',
-    dates: '11.09.2026 – 17.09.2026',
-    status: 'Регистрация открыта',
-    statusColor: 'bg-green-100 text-green-700',
-    image: 'https://ext.same-assets.com/252857205/117723726.png'
-  },
-  {
     id: 'biryusa-2026',
     title: 'Всероссийский молодёжный форум «Территория инициативной молодёжи «Бирюса» – 2026',
-    location: 'Россия, Красноярский край',
-    dates: '17.06.2026 – 21.06.2026',
-    status: 'Регистрация открыта',
-    statusColor: 'bg-green-100 text-green-700',
-    image: 'https://ext.same-assets.com/252857205/1733271699.png'
+    location: 'Красноярский край',
+    dates: '17 июня 2026 г. – 21 июня 2026 г.',
+    status: 'unavailable',
+    statusText: 'Регистрация недоступна',
+    statusNote: 'Регистрация доступна только следующим категориям пользователей: иностранные участники, соотечественники (РФ граждане за рубежом), иностранные участники, проживающие на территории РФ.',
+    logo: 'https://ext.same-assets.com/252857205/1596549718.png'
   },
   {
     id: 'child-peace',
     title: 'Всемирная детская конференция «Дети – за мир»',
-    location: 'Россия, Республика Крым',
-    dates: '21.06.2026 – 12.07.2026',
-    status: 'Регистрация открыта',
-    statusColor: 'bg-green-100 text-green-700',
-    image: 'https://ext.same-assets.com/252857205/4277843668.png'
+    location: 'Республика Крым',
+    dates: '21 июня 2026 г. – 12 июля 2026 г.',
+    status: 'unavailable',
+    statusText: 'Регистрация недоступна',
+    statusNote: 'Регистрация доступна только для участников с датой рождения с 13.07.2008 по 21.05.2012.',
+    logo: 'https://ext.same-assets.com/252857205/1194794149.png'
   },
   {
     id: 'ecosystem-26',
     title: 'Всероссийский молодёжный экологический форум «Экосистема. Заповедный край» – 2026',
-    location: 'Россия, Камчатский край',
-    dates: '22.06.2026 – 28.06.2026',
-    status: 'Регистрация открыта',
-    statusColor: 'bg-green-100 text-green-700',
-    image: 'https://ext.same-assets.com/252857205/1876784289.png'
+    location: 'Камчатский край',
+    dates: '22 июня 2026 г. – 28 июня 2026 г.',
+    status: 'unavailable',
+    statusText: 'Регистрация недоступна',
+    statusNote: 'Регистрация доступна только следующим категориям пользователей: иностранные участники, соотечественники (РФ граждане за рубежом), иностранные участники, проживающие на территории РФ.',
+    logo: 'https://ext.same-assets.com/252857205/1091441774.png'
+  },
+  {
+    id: 'sheregesh-2026',
+    title: 'Молодёжный форум «Шерегеш» – 2026',
+    location: 'Кемеровская область',
+    dates: '22 июня 2026 г. – 25 июня 2026 г.',
+    status: 'unavailable',
+    statusText: 'Регистрация недоступна',
+    statusNote: 'Регистрация доступна только следующим категориям пользователей: иностранные участники, соотечественники (РФ граждане за рубежом), иностранные участники, проживающие на территории РФ.',
+    logo: 'https://ext.same-assets.com/252857205/70379289.svg'
+  },
+  {
+    id: 'eurasia-2026',
+    title: 'Международный молодёжный форум «Евразия Global»',
+    location: 'Оренбургская область',
+    dates: '23 июня 2026 г. – 28 июня 2026 г.',
+    status: 'available',
+    statusText: 'Подать заявку',
+    statusNote: '',
+    logo: 'https://ext.same-assets.com/252857205/70379289.svg'
+  },
+  {
+    id: 'dobrino-2026',
+    title: 'Всероссийский форум развития гражданского общества «Добрино»',
+    location: 'Ханты-Мансийский автономный округ - Югра',
+    dates: '1 июля 2026 г. – 14 июля 2026 г.',
+    status: 'unavailable',
+    statusText: 'Регистрация недоступна',
+    statusNote: 'Регистрация доступна только следующим категориям пользователей: иностранные участники, соотечественники (РФ граждане за рубежом), иностранные участники, проживающие на территории РФ.',
+    logo: 'https://ext.same-assets.com/252857205/70379289.svg'
   }
 ];
 
@@ -62,50 +86,55 @@ export default function AllEventsPage() {
         </Link>
       </div>
 
-      {/* Events grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {events.map((event) => (
-            <div key={event.id} className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group">
-              {/* Event image */}
-              <div className="relative h-[200px] overflow-hidden">
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-
-              {/* Event details */}
-              <div className="p-6">
-                <div className="space-y-3 mb-4">
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span>{event.dates}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <span>{event.location}</span>
-                  </div>
+      {/* Events list */}
+      <div className="space-y-6">
+        {events.map((event) => (
+          <div key={event.id} className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+            <div className="p-6">
+              <div className="flex gap-6 items-start">
+                {/* Event logo */}
+                <div className="w-24 h-24 flex-shrink-0 bg-gray-50 rounded-lg flex items-center justify-center p-3">
+                  <img
+                    src={event.logo}
+                    alt={event.title}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
 
-                <h3 className="text-lg font-bold mb-4 text-[#1a1a1a] leading-tight min-h-[60px]">
-                  {event.title}
-                </h3>
+                {/* Event details */}
+                <div className="flex-1">
+                  <div className="text-sm text-gray-600 mb-2">
+                    {event.location} {event.dates}
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    {event.title}
+                  </h3>
+                  {event.statusNote && (
+                    <p className="text-sm text-[#E55C94]">
+                      {event.statusNote}
+                    </p>
+                  )}
+                </div>
 
-                <Link href={`/events/${event.id}`}>
-                  <button className="w-full px-6 py-3 bg-[#e84393] text-white rounded-full font-semibold hover:bg-[#d73882] transition-colors">
-                    Подробнее
-                  </button>
-                </Link>
+                {/* Status button */}
+                <div className="flex-shrink-0">
+                  {event.status === 'available' ? (
+                    <Link href={`/events/${event.id}`}>
+                      <button className="px-8 py-3 bg-[#00A86B] text-white rounded-full font-medium hover:bg-[#008F5A] transition-colors whitespace-nowrap">
+                        {event.statusText}
+                      </button>
+                    </Link>
+                  ) : (
+                    <button className="px-8 py-3 bg-gray-100 text-gray-500 rounded-full font-medium cursor-not-allowed whitespace-nowrap">
+                      {event.statusText}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
