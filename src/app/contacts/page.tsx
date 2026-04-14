@@ -1,133 +1,106 @@
+'use client';
+
+import Link from 'next/link';
+
 export default function ContactsPage() {
   return (
-    <div className="min-h-screen bg-[#f8f2f0]">
-      <div className="max-w-[1400px] mx-auto px-6 py-12">
-        <h1 className="text-5xl font-bold mb-12 text-[#1a1a1a]">Контакты</h1>
+    <div className="min-h-screen bg-[#FAF8F7] py-8">
+      <div className="max-w-[1400px] mx-auto px-6">
+        {/* Breadcrumbs */}
+        <nav className="flex items-center gap-2 text-sm mb-6 text-gray-600">
+          <Link href="/" className="hover:text-[#E55C94]">Главная</Link>
+          <span>›</span>
+          <span className="text-gray-900">Контакты</span>
+        </nav>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {/* Contact Info */}
-          <div className="bg-white rounded-3xl p-8 shadow-lg">
-            <h2 className="text-2xl font-bold mb-6 text-[#1a1a1a]">Свяжитесь с нами</h2>
+        {/* Page Title */}
+        <h1 className="text-4xl font-bold mb-8 text-[#1a1a1a]">Обратная связь</h1>
 
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-[#e84393] rounded-full flex items-center justify-center text-white flex-shrink-0">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-bold mb-1">Email</div>
-                  <a href="mailto:info@wyffest.com" className="text-[#e84393] hover:underline">
-                    info@wyffest.com
-                  </a>
+        {/* Service Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">Служба заботы</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Left Column */}
+            <div className="bg-[#F5EDE7] rounded-3xl p-8 space-y-6">
+              <div>
+                <div className="text-sm text-gray-600 mb-1">Email</div>
+                <a href="mailto:help@wyffest.com" className="text-lg font-semibold text-[#E55C94] hover:underline">
+                  help@wyffest.com
+                </a>
+              </div>
+              <div>
+                <div className="text-sm text-gray-600 mb-1">Для звонков по России</div>
+                <a href="tel:88007077733" className="text-lg font-semibold text-[#E55C94] hover:underline">
+                  8 (800) 707-77-33
+                </a>
+              </div>
+              <div>
+                <div className="text-sm text-gray-600 mb-1">Режим работы</div>
+                <div className="text-lg font-semibold text-gray-900">
+                  Пн-пт: 9:00 - 18:00
                 </div>
               </div>
-
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-[#44cc7d] rounded-full flex items-center justify-center text-white flex-shrink-0">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-bold mb-1">Телефон</div>
-                  <a href="tel:+74951234567" className="text-[#44cc7d] hover:underline">
-                    +7 (495) 123-45-67
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-[#dfb329] rounded-full flex items-center justify-center text-white flex-shrink-0">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-bold mb-1">Адрес</div>
-                  <p className="text-gray-700">
-                    Москва, ул. Примерная, д. 1, стр. 1
-                  </p>
-                </div>
+              <div>
+                <div className="text-sm text-gray-600 mb-1">Для звонков из-за рубежа</div>
+                <a href="tel:+74737077733" className="text-lg font-semibold text-[#E55C94] hover:underline">
+                  +7 (473) 707-77-33
+                </a>
               </div>
             </div>
 
-            <div className="mt-8 pt-8 border-t">
-              <div className="font-bold mb-4">Социальные сети</div>
-              <div className="flex gap-3">
-                <a
-                  href="https://vk.com/wyf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-black rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
-                >
-                  <img src="https://ext.same-assets.com/252857205/3890491112.svg" alt="VK" className="w-6 h-6" />
+            {/* Right Column */}
+            <div className="bg-[#F5EDE7] rounded-3xl p-8 space-y-6">
+              <div>
+                <div className="text-sm text-gray-600 mb-1">Для СМИ</div>
+                <a href="mailto:press@wyffest.com" className="text-lg font-semibold text-[#E55C94] hover:underline">
+                  press@wyffest.com
                 </a>
-                <a
-                  href="https://t.me/wyffest"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-black rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
-                >
-                  <img src="https://ext.same-assets.com/252857205/3329913190.svg" alt="Telegram" className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://max.ru/wyffest"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-black rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
-                >
-                  <img src="https://ext.same-assets.com/252857205/3242978114.svg" alt="MAX" className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="text-sm text-gray-600 mb-1">Для партнёров</div>
+                <a href="mailto:partners@wyffest.com" className="text-lg font-semibold text-[#E55C94] hover:underline">
+                  partners@wyffest.com
                 </a>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Contact Form */}
-          <div className="bg-white rounded-3xl p-8 shadow-lg">
-            <h2 className="text-2xl font-bold mb-6 text-[#1a1a1a]">Обратная связь</h2>
-            <form className="space-y-4">
+        {/* Organization Section */}
+        <div>
+          <h2 className="text-3xl font-bold mb-6">Об организации</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Left Column */}
+            <div className="bg-[#F5EDE7] rounded-3xl p-8 space-y-6">
               <div>
-                <label className="block text-sm font-semibold mb-2">Ваше имя</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#e84393] focus:outline-none transition-colors"
-                  placeholder="Введите ваше имя"
-                />
+                <div className="text-sm text-gray-600 mb-1">Юридический адрес</div>
+                <div className="text-lg font-semibold text-gray-900 mb-3">
+                  121099, г. Москва, Подколокольный переулок, дом 10А/2, стр. 1
+                </div>
+                <a href="mailto:info@wyffest.com" className="text-lg font-semibold text-[#E55C94] hover:underline">
+                  info@wyffest.com
+                </a>
               </div>
               <div>
-                <label className="block text-sm font-semibold mb-2">Email</label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#e84393] focus:outline-none transition-colors"
-                  placeholder="example@email.com"
-                />
+                <div className="text-sm text-gray-600 mb-1">Режим работы</div>
+                <div className="text-lg font-semibold text-gray-900">
+                  Пн-Пт: 10:00 - 19:00
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-semibold mb-2">Тема обращения</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#e84393] focus:outline-none transition-colors"
-                  placeholder="Краткое описание темы"
-                />
+            </div>
+
+            {/* Right Column */}
+            <div className="bg-[#F5EDE7] rounded-3xl p-8">
+              <div className="text-lg font-semibold text-gray-900 mb-4">
+                Устав организации
               </div>
-              <div>
-                <label className="block text-sm font-semibold mb-2">Сообщение</label>
-                <textarea
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#e84393] focus:outline-none transition-colors resize-none"
-                  placeholder="Введите ваше сообщение"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full px-8 py-4 bg-[#e84393] text-white rounded-full font-semibold hover:bg-[#d73882] transition-colors shadow-lg"
+              <a
+                href="#"
+                className="inline-block px-8 py-3 bg-[#E55C94] text-white rounded-full font-semibold hover:bg-[#D04A82] transition-colors"
               >
-                Отправить сообщение
-              </button>
-            </form>
+                Просмотреть
+              </a>
+            </div>
           </div>
         </div>
       </div>
