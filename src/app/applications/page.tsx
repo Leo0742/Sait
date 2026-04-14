@@ -1,7 +1,14 @@
 'use client';
 
+interface Application {
+  id: string | number;
+  name: string;
+  dates: string;
+  location: string;
+}
+
 export default function ApplicationsPage() {
-  const applications: any[] = [];
+  const applications: Application[] = [];
 
   return (
     <div>
@@ -24,7 +31,7 @@ export default function ApplicationsPage() {
       {/* Applications list (when there are applications) */}
       {applications.length > 0 && (
         <div className="space-y-6">
-          {applications.map((app: any) => (
+          {applications.map((app) => (
             <div
               key={app.id}
               className="bg-white border border-gray-100 rounded-xl p-6 hover:shadow-md transition-shadow"
