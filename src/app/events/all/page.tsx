@@ -89,7 +89,11 @@ export default function AllEventsPage() {
       {/* Events list */}
       <div className="space-y-6">
         {events.map((event) => (
-          <div key={event.id} className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+          <Link
+            key={event.id}
+            href={`/events/${event.id}`}
+            className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
+          >
             <div className="p-6">
               <div className="flex gap-6 items-start">
                 {/* Event logo */}
@@ -106,7 +110,7 @@ export default function AllEventsPage() {
                   <div className="text-sm text-gray-600 mb-2">
                     {event.location} {event.dates}
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3 hover:text-[#E55C94] transition-colors">
                     {event.title}
                   </h3>
                   {event.statusNote && (
@@ -119,20 +123,21 @@ export default function AllEventsPage() {
                 {/* Status button */}
                 <div className="flex-shrink-0">
                   {event.status === 'available' ? (
-                    <Link href={`/events/${event.id}`}>
-                      <button className="px-8 py-3 bg-[#00A86B] text-white rounded-full font-medium hover:bg-[#008F5A] transition-colors whitespace-nowrap">
-                        {event.statusText}
-                      </button>
-                    </Link>
-                  ) : (
-                    <button className="px-8 py-3 bg-gray-100 text-gray-500 rounded-full font-medium cursor-not-allowed whitespace-nowrap">
+                    <button
+                      onClick={(e) => e.preventDefault()}
+                      className="px-8 py-3 bg-[#00A86B] text-white rounded-full font-medium hover:bg-[#008F5A] transition-colors whitespace-nowrap"
+                    >
                       {event.statusText}
                     </button>
+                  ) : (
+                    <div className="px-8 py-3 bg-gray-100 text-gray-500 rounded-full font-medium whitespace-nowrap">
+                      {event.statusText}
+                    </div>
                   )}
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

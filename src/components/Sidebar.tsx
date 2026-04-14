@@ -11,7 +11,7 @@ export default function Sidebar() {
 
   const menuItems = [
     { icon: '👤', label: 'Профиль', href: '/profile' },
-    { icon: '📋', label: 'Мои заявки', href: '/profile/applications' },
+    { icon: '📋', label: 'Мои заявки', href: '/applications' },
     { icon: '🎯', label: 'Мероприятия', href: '/events', submenu: [
       { label: 'Мои мероприятия', href: '/events/my' },
       { label: 'Все мероприятия', href: '/events/all' }
@@ -33,7 +33,7 @@ export default function Sidebar() {
           </div>
         </div>
         <h2 className="font-semibold text-lg mb-1">Болбачан Л. А.</h2>
-        <p className="text-sm text-[#E55C94] mb-4">bollanN200746@yandex.ru</p>
+        <p className="text-sm text-[#E55C94] mb-4">bolbA2007de@yandex.ru</p>
         <Button
           variant="outline"
           className="w-full rounded-full border-2 border-[#E55C94] text-[#E55C94] hover:bg-[#FCF1F5] font-medium"
@@ -44,40 +44,57 @@ export default function Sidebar() {
 
       {/* Navigation Menu */}
       <nav className="space-y-1">
-        {menuItems.map((item) => (
-          <div key={item.href}>
-            <Link
-              href={item.href}
-              className={cn(
-                "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors font-medium text-sm",
-                pathname.startsWith(item.href)
-                  ? "text-[#E55C94] bg-[#FCF1F5]"
-                  : "text-gray-700 hover:bg-gray-50"
+        {menuItems.map((item) => {
+          const isActive = pathname.startsWith(item.href);
+          return (
+            <div key={item.href}>
+              <Link
+                href={item.href}
+                className={cn(
+                  "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors font-medium text-sm",
+                  isActive
+                    ? "text-[#E55C94] bg-[#FCF1F5]"
+                    : "text-gray-700 hover:bg-gray-50"
+                )}
+              >
+                {item.label === 'Профиль' && (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                )}
+                {item.label === 'Мои заявки' && (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                )}
+                {item.label === 'Мероприятия' && (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                )}
+                <span>{item.label}</span>
+              </Link>
+              {item.submenu && (
+                <div className="ml-11 mt-1 space-y-1">
+                  {item.submenu.map((subitem) => (
+                    <Link
+                      key={subitem.href}
+                      href={subitem.href}
+                      className={cn(
+                        "block px-4 py-2 rounded-lg text-sm transition-colors",
+                        pathname === subitem.href
+                          ? "text-[#E55C94] font-medium"
+                          : "text-gray-600 hover:text-gray-900"
+                      )}
+                    >
+                      {subitem.label}
+                    </Link>
+                  ))}
+                </div>
               )}
-            >
-              <span className="text-base">{item.icon}</span>
-              <span>{item.label}</span>
-            </Link>
-            {item.submenu && (
-              <div className="ml-11 mt-1 space-y-1">
-                {item.submenu.map((subitem) => (
-                  <Link
-                    key={subitem.href}
-                    href={subitem.href}
-                    className={cn(
-                      "block px-4 py-2 rounded-lg text-sm transition-colors",
-                      pathname === subitem.href
-                        ? "text-[#E55C94] font-medium"
-                        : "text-gray-600 hover:text-gray-900"
-                    )}
-                  >
-                    {subitem.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </nav>
 
       {/* Event Banner */}
